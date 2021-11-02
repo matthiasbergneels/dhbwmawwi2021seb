@@ -109,5 +109,31 @@ public class DatatypeExamples {
             """;
 
     System.out.println(htmlAsBlock);
+
+
+    // Typkonvertierung
+
+    short smallNumberA = 42;
+
+    int biggerNumberA;
+
+    // Konvertierung --> short zu int --> implizite / erweiternde Konvertierung
+    biggerNumberA = smallNumberA;
+    System.out.println(biggerNumberA);
+
+    biggerNumberA = biggerNumberA + 1;
+
+    // Konvertierung --> int zu short --> explizite / einschränkende Konvertierung
+    smallNumberA = (short)biggerNumberA;
+    System.out.println(smallNumberA);
+
+    // Konvertierung Gleitkomma zu Ganzzahl --> Abschneiden der Nachkommastellen
+    biggerNumberA = (int)bigPreciseNumberA;
+    System.out.println(biggerNumberA);
+
+    // Konvertierung Gleitkomma zu Ganzzahl --> Abschneiden der Nachkommastellen
+    bigPreciseNumberA = 3.54;
+    biggerNumberA = (int)bigPreciseNumberA;
+    System.out.println(biggerNumberA);
   }
 }
