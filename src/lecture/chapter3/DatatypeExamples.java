@@ -61,7 +61,7 @@ public class DatatypeExamples {
     double bigPreciseNumberA = .5;
     System.out.println(bigPreciseNumberA);
 
-    bigPreciseNumberA = 3.;
+    bigPreciseNumberA = 3.;     // --> bigPreciseNumberA = 3;
     System.out.println(bigPreciseNumberA);
 
     bigPreciseNumberA = 3.14e2;
