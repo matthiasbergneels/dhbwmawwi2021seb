@@ -30,5 +30,56 @@ public class IfExamples {
     }
 
     System.out.println("Programm Ende");
+
+
+
+
+    // Short Circuite Evaluation
+
+    boolean isRaining = true;
+    boolean haveToLeaveHouse = false;
+
+    if(haveToLeaveHouse && isRaining){
+      System.out.println("Nimm einen Regenschirm mit");
+    } else {
+      System.out.println("Du brauchst keinen Regenschirm");
+    }
+
+    int numberA = 5;
+
+    /*
+    Wahrheitstabelle für &
+
+    &     true  false
+    true  true  false
+    false false false
+     */
+
+    if(numberA > 10 & numberA++ < 100){
+      System.out.println("NumberA ist zwischen 11 und 99");
+    } else {
+      System.out.println("NumberA ist kleiner gleich 10 und größer gleich 100");
+    }
+
+    System.out.println(numberA);
+
+    String myText = null;
+
+    if(myText != null && myText.length() > 10){
+      System.out.println("der text ist länger als 10 Zeichen");
+    } else {
+      System.out.println("Der text hat weniger als 10 Zeichen oder es gibt keinen Text");
+    }
+
+    // Alternative
+
+    if(myText != null){
+      if(myText.length() > 10){
+        System.out.println("der text ist länger als 10 Zeichen");
+      } else {
+        System.out.println("Der Text hat weniger als 10 Zeichen");
+      }
+    }
+
   }
 }

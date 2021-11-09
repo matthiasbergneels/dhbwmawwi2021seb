@@ -18,6 +18,31 @@ public class ArrayExamples {
 
     short[] luckyNumbers = {13, 7, 55, 32, 17, 99, 125};
 
+    System.out.println("Ausgabe von LuckyNumbers mit For-Each Schleife:");
+    for(short currentNumber : luckyNumbers){
+      if(currentNumber == 55){
+        currentNumber = 0;
+        continue;
+      }
+      if(currentNumber == 99){
+        System.out.println("Satan!!!");
+        break;
+      }
+      System.out.println(currentNumber);
+    }
+
+    System.out.println("Schleifen Durchlauf - Ende");
+
+    System.out.println("Ausgabe LuckyNumbers mit For:");
+    for(int i = 0; i < luckyNumbers.length; i++){
+      if(luckyNumbers[i] == 55){
+        luckyNumbers[i] = 0;
+      }
+      System.out.println(luckyNumbers[i]);
+    }
+
+    System.out.println("Schleifen Durchlauf - Ende");
+
     System.out.println(luckyNumbers[2]);
     System.out.println(luckyNumbers.length);
 
