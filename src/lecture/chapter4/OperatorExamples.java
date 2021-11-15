@@ -44,10 +44,9 @@ public class OperatorExamples {
 
 
     // Zuweisungsoperatoren
-    numberA =+ numberB;   // numberA = numberA + numberB;
+    numberA += numberB;   // numberA = numberA + numberB;
 
     // ? Operator
-
     boolean isRaining = false;
 
     String resultText = isRaining ? "Regenschirm einpacken" : "kein Regenschirm benötigt";

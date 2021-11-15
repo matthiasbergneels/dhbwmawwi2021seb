@@ -31,6 +31,10 @@ public class ArrayExamples {
       System.out.println(currentNumber);
     }
 
+    for(short currentNumber : luckyNumbers){
+      System.out.print(currentNumber + " ");
+    }
+
     System.out.println("Schleifen Durchlauf - Ende");
 
     System.out.println("Ausgabe LuckyNumbers mit For:");
@@ -39,6 +43,10 @@ public class ArrayExamples {
         luckyNumbers[i] = 0;
       }
       System.out.println(luckyNumbers[i]);
+    }
+
+    for(short currentNumber : luckyNumbers){
+      System.out.print(currentNumber + " ");
     }
 
     System.out.println("Schleifen Durchlauf - Ende");
