@@ -15,7 +15,7 @@ public class IfExamples {
     }
 
     // Alternative:
-    System.out.println((grade <= 4) ? "Klausur bestanden\njuhu!" : "Durchgefallen\nMuss ich wiederholen");
+    System.out.print((grade <= 4) ? "Klausur bestanden\njuhu!\n" : "Durchgefallen\nMuss ich wiederholen\n");
 
 
     if(grade < 2){
