@@ -11,6 +11,9 @@ public class Car {
     private int currentSpeed = 0;
     final CarBrands brand;
 
+    // Klassenattribut(e)
+    private static int carCount = 0;
+
     // öffentliche Konstanten
     public final static String ALLOWED_COLOR_BLUE = "Blau";
     public final static String ALLOWED_COLOR_RED = "Rot";
@@ -29,15 +32,17 @@ public class Car {
       licensePlate = parameterLicensePlate;
 
       currentSpeed = 0;
+
+      carCount++;
     }
 
 
     // Methoden - Verhalten der Objekte
     void accelerate(int accelerationSpeed){
       if(accelerationSpeed < hp / 10){
-        currentSpeed = currentSpeed + accelerationSpeed;
+        this.currentSpeed = this.currentSpeed + accelerationSpeed;
       } else {
-        currentSpeed = currentSpeed + hp / 10;
+        this.currentSpeed = this.currentSpeed + hp / 10;
       }
     }
 
@@ -77,24 +82,32 @@ public class Car {
     }
      */
 
-    public void setColor(String parameterColor){
-      if (parameterColor.equalsIgnoreCase(ALLOWED_COLOR_BLACK) |
-        parameterColor.equalsIgnoreCase(ALLOWED_COLOR_RED) |
-        parameterColor.equalsIgnoreCase(ALLOWED_COLOR_BLUE) |
-        parameterColor.equalsIgnoreCase(ALLOWED_COLOR_GREEN)) {
-        color = parameterColor;
+    public void setColor(String color){
+      if (color.equalsIgnoreCase(ALLOWED_COLOR_BLACK) |
+        color.equalsIgnoreCase(ALLOWED_COLOR_RED) |
+        color.equalsIgnoreCase(ALLOWED_COLOR_BLUE) |
+        color.equalsIgnoreCase(ALLOWED_COLOR_GREEN)) {
+        this.color = color;
       } else {
-        color = ALLOWED_COLOR_BLACK;
-      }
-
-    }
-
-    public void setHp(short parameterHp){
-      if(parameterHp >= 50 && parameterHp <= 999){
-        hp = parameterHp;
-      } else {
-        hp = 100;
+        this.color = ALLOWED_COLOR_BLACK;
       }
     }
 
+    public void setHp(short hp){
+      if(hp >= 50 && hp <= 999){
+        this.hp = hp;
+      } else {
+        this.hp = 100;
+      }
+    }
+
+    protected void finalize(){
+      carCount--;
+      System.out.println("Das " + this.color + " Auto mit " + this.hp + " PS und dem Nummernschild " + this.licensePlate + " wurde verschrottet");
+    }
+
+    // Klassenmethode(n)
+    public static int getCarCount(){
+      return carCount;
+    }
 }
