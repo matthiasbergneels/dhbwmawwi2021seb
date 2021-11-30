@@ -22,10 +22,14 @@ public class DrivewayRun {
 
     System.out.println("Es gibt " + Car.getCarCount() + " Autos");
 
-
+    /*
     garage[0] = myCar;
     garage[1] = yourCar;
     garage[2] = hisCar;
+
+     */
+
+
     /*
     myCar.color = "Blau";
     myCar.hp = 150;
@@ -68,6 +72,9 @@ public class DrivewayRun {
     System.out.println("Dein Auto hat " + yourCar.getHp() + " PS und ist " + yourCar.getColor() + "; aktuelle Geschwindigkeit: " + yourCar.getCurrentSpeed());
 
 
+    ParakingGarage smallParkingGarage = new ParakingGarage(5);
+
+    smallParkingGarage.parkCar(hisCar);
 
     hisCar = new Car(Car.ALLOWED_COLOR_RED, (short)230, Car.CarBrands.Skoda, "HD-MI 1234");
     //garage[3] = hisCar;
