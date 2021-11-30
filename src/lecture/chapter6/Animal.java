@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public class Animal {
+public abstract class Animal {
 
   private float size;
   private String description;
@@ -17,11 +17,9 @@ public class Animal {
     System.out.println("Das Tier " + description + " frisst!");
   }
 
-  public void breath(){
-    System.out.println("Das Tier " + description + " atmet!");
-  }
+  public abstract void breath();
 
-  public void move(){
+  public final void move(){
     System.out.println("Das Tier " + description + " bewegt sich!");
   }
 
@@ -47,5 +45,12 @@ public class Animal {
 
   public void setWeight(float weight) {
     this.weight = weight;
+  }
+
+  @Override
+  public String toString(){
+    return super.toString() + " - Description: " + description
+                            + "; Größe: " + size
+                            + "; Gewicht " + weight;
   }
 }
