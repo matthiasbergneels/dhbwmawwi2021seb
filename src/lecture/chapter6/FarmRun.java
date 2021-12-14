@@ -33,5 +33,50 @@ public class FarmRun {
 
     //System.out.println(myAnimal);
 
+
+    // Narrowing Cast -> Sichbarkeit einschränkend (impliziter Cast)
+    Animal anyAnimal = myDog;
+
+    anyAnimal.move();
+    anyAnimal.eat();
+    anyAnimal.breath();
+    //anyAnimal.bark(); --> durch die Animal Referenz ist die Sichtbarkeit eingeschränkt
+
+    Object anyObject = anyAnimal;
+
+    System.out.println(anyObject);
+
+    // Widening Cast --> Sichbarkeit erweiternd
+    Dog anyDog = (Dog)anyAnimal;
+
+    anyDog.breath();
+    anyDog.eat();
+    anyDog.move();
+    anyDog.bark();
+
+
+
+    Animal[] shelter = new Animal[5];
+    // Narrowing Cast
+    shelter[0] = myDog;
+    shelter[1] = myBird;
+    shelter[2] = new Bird(14f, "Funny", 10f, true);
+    shelter[3] = new Bird(14f, "Pingi", 10f, false);
+    shelter[4] = new Dog(49f, "Wuffi", 30f, "Bully");
+
+    System.out.println("Bauer läuft durch den Stall und kümmert sich um jedes Tier:");
+    for(Animal currentAnimal : shelter){
+      currentAnimal.breath();
+      currentAnimal.eat();
+      currentAnimal.move();
+
+      if(currentAnimal instanceof Dog){
+        Dog currentDog = (Dog)currentAnimal;
+
+        currentDog.bark();
+      } else {
+        System.out.println(currentAnimal.getDescription() + " ist kein Hund!");
+      }
+    }
   }
 }
