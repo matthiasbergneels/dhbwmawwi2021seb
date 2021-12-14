@@ -16,7 +16,7 @@ public class TravelAgencyRun {
 
     for(Bookable currentBookableEntity : bookableEntities){
       // Polymorphie durch Interfaces
-      
+
       System.out.println("Freie Plätze: " + currentBookableEntity.freeSlots());
 
       boolean booked = currentBookableEntity.bookSlots(50);
