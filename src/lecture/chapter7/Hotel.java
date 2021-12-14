@@ -29,4 +29,10 @@ public class Hotel implements Bookable{
     return roomCount - bookedRoomCount;
   }
 
+  @Override
+  public boolean reserveSlots(int slotsToReserve){
+    System.out.println("Reserve in Hotel!");
+    return false;
+  }
+
 }

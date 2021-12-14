@@ -1,6 +1,6 @@
 package lecture.chapter6;
 
-public final class Dog extends Animal{
+public final class Dog extends Animal {
 
   private String breed;
 
@@ -43,4 +43,5 @@ public final class Dog extends Animal{
     return super.toString()
           + "; Rasse: " + breed;
   }
+
 }

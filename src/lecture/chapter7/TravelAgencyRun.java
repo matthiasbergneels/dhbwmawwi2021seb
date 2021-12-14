@@ -25,6 +25,15 @@ public class TravelAgencyRun {
       System.out.println("Freie Plätze: " + currentBookableEntity.freeSlots());
 
       System.out.println(currentBookableEntity.toString());
+
+      System.out.println(currentBookableEntity.reserveSlots(100));
+
+      if(currentBookableEntity instanceof Plane){
+        // widening Cast --> Sichbarkeit erweitern
+        Plane myPlane = (Plane)currentBookableEntity;
+        myPlane.fly();
+      }
+
     }
 
   }
