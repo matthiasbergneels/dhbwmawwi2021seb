@@ -24,6 +24,7 @@ public class Sheep implements Cloneable {
     return age;
   }
 
+
   @Override
   public Sheep clone() throws CloneNotSupportedException{
     Sheep clonedSheep = (Sheep)super.clone();
