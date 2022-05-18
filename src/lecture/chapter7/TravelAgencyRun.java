@@ -2,7 +2,7 @@ package lecture.chapter7;
 
 public class TravelAgencyRun {
 
-  public static void main(String[] args) {
+  public static void main(String[] args){
 
     Bookable[] bookableEntities = new Bookable[5];
 
@@ -19,9 +19,28 @@ public class TravelAgencyRun {
 
       System.out.println("Freie Plätze: " + currentBookableEntity.freeSlots());
 
-      boolean booked = currentBookableEntity.bookSlots(50);
+      try {
+        int slotsToBook = 110;
+        currentBookableEntity.bookSlots(slotsToBook);
+        System.out.println("Buchung erfolgreich - " + slotsToBook + " gebucht!");
+      } catch(NotEnoughFreeSlotsException e){
+        System.out.println(e.getMessage());
+        System.out.println("Wir buchen die verbleibenden Plätze");
 
-      System.out.println("Buchung erfolgreich? " + booked);
+        try{
+          currentBookableEntity.bookSlots(e.getFreeSlots());
+        }catch(NotEnoughFreeSlotsException missingSlotsException){
+          System.out.println("Jetzt ist es sinnlos!");
+        } catch(NullPointerException nullPointerException){
+          System.out.println("Jetzt ist alles im Eimer!");
+          return;
+        }
+
+      }  finally {
+        System.out.println("Ich laufe immer!!");
+      }
+
+      //System.out.println("Buchung erfolgreich? " + booked);
       System.out.println("Freie Plätze: " + currentBookableEntity.freeSlots());
 
       System.out.println(currentBookableEntity.toString());

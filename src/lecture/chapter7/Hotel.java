@@ -15,13 +15,16 @@ public class Hotel implements Bookable{
   }
 
   @Override
-  public boolean bookSlots(int slotsToBook){
-    if(slotsToBook <= freeSlots()){
-      bookedRoomCount = bookedRoomCount + slotsToBook;
-      return true;
+  public void bookSlots(int slotsToBook) throws NotEnoughFreeSlotsException{
+    if(slotsToBook > freeSlots()){
+      throw new NotEnoughFreeSlotsException(freeSlots(), slotsToBook);
     }
 
-    return false;
+    if(slotsToBook == 10){
+      throw new NullPointerException();
+    }
+
+    bookedRoomCount = bookedRoomCount + slotsToBook;
   }
 
   @Override

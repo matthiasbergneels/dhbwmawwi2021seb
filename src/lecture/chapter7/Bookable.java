@@ -2,7 +2,7 @@ package lecture.chapter7;
 
 public interface Bookable {
 
-  boolean bookSlots(int slotsToBook);
+  void bookSlots(int slotsToBook) throws NotEnoughFreeSlotsException, NullPointerException;
   int freeSlots();
 
   default boolean reserveSlots(int slotsToReserve){
