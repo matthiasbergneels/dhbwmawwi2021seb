@@ -68,5 +68,24 @@ public class SetExample {
     System.out.println("nameThree equals nameOne: " + (nameThree.equals(nameOne)));
     System.out.println("nameOne equals nameTwo: " + (nameOne.equals(nameTwo)));
 
+
+    TreeSet<FullName> nameSetByLength = new TreeSet<>(new SortFullNameBySignCount());
+    nameSetByLength.addAll(fullNameSet);
+
+
+    System.out.println("Name Set sorted by sign count:");
+    for(FullName name : nameSetByLength){
+      System.out.println(name);
+    }
+
+
+    nameSetByLength.add(new FullName("a", "b"));
+    nameSetByLength.add(new FullName("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "b"));
+
+    System.out.println("Name Set sorted by sign count:");
+    for(FullName name : nameSetByLength){
+      System.out.println(name);
+    }
+
   }
 }

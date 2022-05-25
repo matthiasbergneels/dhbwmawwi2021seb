@@ -1,8 +1,6 @@
 package lecture.chapter8;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class ListExample {
 
@@ -61,6 +59,35 @@ public class ListExample {
       System.out.println(number + 6);
     }
 
+
+
+
+    List<FullName> fullNameList = new ArrayList<>();
+
+    fullNameList.add(new FullName("Klaus", "Schmidt"));
+    fullNameList.add(new FullName("Gabi", "Müller"));
+    fullNameList.add(new FullName("Franz", "Müller"));
+    fullNameList.add(new FullName("Zeus", "Gott"));
+    fullNameList.add(new FullName("Klaus", "Schmidt"));
+
+    System.out.println("Unsortierte Namen:");
+    for(FullName name : fullNameList){
+      System.out.println(name);
+    }
+
+    // Sortierung nach der natürlichen Ordnung
+    Collections.sort(fullNameList);
+    System.out.println("Natürliche Ordnung - Namen:");
+    for(FullName name : fullNameList){
+      System.out.println(name);
+    }
+
+    // Sortierung nach der externer Ordnung --> by sign Count
+    Collections.sort(fullNameList, new SortFullNameBySignCount());
+    System.out.println("Sortiert nach Anzahl der Zeichen - Namen:");
+    for(FullName name : fullNameList){
+      System.out.println(name);
+    }
 
   }
 }
