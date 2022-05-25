@@ -64,8 +64,9 @@ public class SetExample {
     System.out.println("nameOne == nameTwo: " + (nameOne == nameTwo));
     System.out.println("nameOne == nameThree: " + (nameOne == nameThree));
 
-    System.out.println("nameOne equals nameTwo: " + (nameOne.equals(nameTwo)));
     System.out.println("nameOne equals nameThree: " + (nameOne.equals(nameThree)));
+    System.out.println("nameThree equals nameOne: " + (nameThree.equals(nameOne)));
+    System.out.println("nameOne equals nameTwo: " + (nameOne.equals(nameTwo)));
 
   }
 }

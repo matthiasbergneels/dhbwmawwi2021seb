@@ -53,4 +53,37 @@ public abstract class Animal {
                             + "; Größe: " + size
                             + "; Gewicht " + weight;
   }
+
+  public boolean equals(Object o){
+    // Alias-Vergleich
+    if(this == o){
+      return true;
+    }
+
+    // null-vergleich
+    if(o == null){
+      return false;
+    }
+
+    // Typ-Vergleich
+    if(this.getClass() != o.getClass()){
+      return false;
+    }
+
+    // Attribut-Vergleiche
+    Animal equalsAnimal = (Animal) o;
+    if(this.size != equalsAnimal.getSize()){
+      return false;
+    }
+
+    if(!this.description.equals(equalsAnimal.getDescription())){
+      return false;
+    }
+
+    if(this.weight != equalsAnimal.getWeight()){
+      return false;
+    }
+
+    return true;
+  };
 }

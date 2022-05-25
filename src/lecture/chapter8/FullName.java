@@ -24,4 +24,43 @@ public class FullName implements Comparable<FullName>{
 
     return this.name.compareTo(o.name);
   }
+
+  public boolean equals(Object o){
+
+    // Alias-Vergleich
+    if(this == o){
+      return true;
+    }
+
+    // null-Prüfung
+    if(o == null){
+      return false;
+    }
+
+    // Typ-Vergleich
+    if(this.getClass() != o.getClass()){
+      return false;
+    }
+
+    /* Alternative für Typ Vergleich
+    if(!(o instanceof FullName)){
+      return false;
+    }
+     */
+
+    // Attribut-Vergleich
+    FullName equalsFullName = (FullName)o;
+
+    /*
+    if(!this.name.equals(equalsFullName.name)){
+      return false;
+    }
+
+    if(!this.familyName.equals(equalsFullName.familyName)){
+      return false;
+    }
+     */
+
+    return (this.compareTo(equalsFullName) == 0);
+  }
 }

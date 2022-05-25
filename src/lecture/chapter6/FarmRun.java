@@ -78,5 +78,13 @@ public class FarmRun {
         System.out.println(currentAnimal.getDescription() + " ist kein Hund!");
       }
     }
+
+    System.out.println(myBird.equals(myDog));
+
+    Animal animalOne = myBird;
+    Animal animalTwo = myDog;
+
+    System.out.println(animalOne.equals(animalTwo));
+
   }
 }

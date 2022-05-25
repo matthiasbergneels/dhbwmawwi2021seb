@@ -31,4 +31,27 @@ public class Bird extends Animal {
   public void setCanFly(boolean canFly) {
     this.canFly = canFly;
   }
+
+
+  public boolean equals(Object o){
+    // Alias-Vergleich
+    if(this == o){
+      return true;
+    }
+
+    // Delegation an Super-Klasse
+    if(!super.equals(o)){
+      return false;
+    }
+
+    // Attribut-Vergleich
+    Bird equalsBird = (Bird)o;
+
+    if(!this.canFly != equalsBird.canFly()){
+      return false;
+    }
+
+    return true;
+  };
 }
+

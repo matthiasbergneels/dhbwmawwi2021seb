@@ -44,4 +44,25 @@ public final class Dog extends Animal {
           + "; Rasse: " + breed;
   }
 
+  public boolean equals(Object o){
+    // Alias-Vergleich
+    if(this == o){
+      return true;
+    }
+
+    // Delegation an Super-Klasse
+    if(!super.equals(o)){
+      return false;
+    }
+
+    // Attribut-Vergleich
+    Dog equalsDog = (Dog)o;
+
+    if(!this.breed.equals(equalsDog.getBreed())){
+      return false;
+    }
+
+    return true;
+  };
+
 }
