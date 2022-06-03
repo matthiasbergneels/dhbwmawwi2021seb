@@ -6,7 +6,7 @@ public class MapExample {
 
   public static void main(String[] args) {
 
-    Map<Integer, String> colorCodes = new HashMap<>();
+    Map<Integer, String> colorCodes = new TreeMap<>();
 
     colorCodes.put(1000, "rot");
     colorCodes.put(2000, "blau");
