@@ -89,5 +89,15 @@ public class ListExample {
       System.out.println(name);
     }
 
+    // Sort mit Lambda Function über Comparator Interface - inline
+    Collections.sort(fullNameList, (nameOne, nameTwo) -> {
+      int signCountNameOne = nameOne.getName().length() + nameOne.getFamilyName().length();
+      int signCountNameTwo = nameTwo.getName().length() + nameTwo.getFamilyName().length();
+
+      return signCountNameOne - signCountNameTwo;
+    });
+
+    // Sort mit Lambda Function über Comparator Interface - aus FullName Class
+    Collections.sort(fullNameList, FullName.sortByFirstNameSignCount);
   }
 }

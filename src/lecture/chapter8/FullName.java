@@ -1,6 +1,12 @@
 package lecture.chapter8;
 
+import java.util.Comparator;
+
 public class FullName implements Comparable<FullName>{
+
+  public static Comparator<FullName> sortByFirstNameSignCount = (nameOne, nameTwo) -> {
+    return nameOne.name.length() - nameTwo.name.length();
+  };
 
   private String name;
   private String familyName;
