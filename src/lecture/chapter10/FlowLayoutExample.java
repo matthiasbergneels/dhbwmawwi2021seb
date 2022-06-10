@@ -11,7 +11,8 @@ public class FlowLayoutExample extends JFrame {
     this.setLayout(new FlowLayout(FlowLayout.LEFT));
 
     this.add(new JLabel("Hallo WWI2021SEB"));
-    this.add(new JTextField("Pausen Dauer"));
+    this.add(new JTextField(5));
+    this.add(new JTextField(10));
     this.add(new JButton("Starte Pause"));
 
     this.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
