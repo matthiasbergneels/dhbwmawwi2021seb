@@ -1,8 +1,5 @@
 package lecture.chapter8;
 
-import com.sun.source.tree.Tree;
-
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;

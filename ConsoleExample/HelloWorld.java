@@ -2,6 +2,11 @@
 * @author Matthias Berg-Neels
 * @version 1.0
 * @since 1.0
+ * {@snippet :
+ * if (v.isPresent()) {
+ *     System.out.println("v: " + v.get());
+ * }
+ * }
 */
 public class HelloWorld {
 
