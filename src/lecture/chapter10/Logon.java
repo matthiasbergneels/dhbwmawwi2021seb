@@ -1,6 +1,10 @@
 package lecture.chapter10;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.ParseException;
 
 import javax.swing.*;
@@ -18,6 +22,35 @@ public class Logon extends JFrame{
 
     JFormattedTextField portField = new JFormattedTextField(new MaskFormatter("#####"));
     portField.setColumns(3);
+
+    myComboBox.addItemListener(new ItemListener() {
+      @Override
+      public void itemStateChanged(ItemEvent e) {
+        System.out.println("ItemEvent - Item:" + e.getItem());
+        System.out.println("ItemEvent - ParameterString:" + e.paramString());
+        System.out.println("ItemEvent - StateChange:" + e.getStateChange());
+
+        if(e.getStateChange() == ItemEvent.SELECTED){
+
+          JComboBox<String> sourceComboBox = (JComboBox<String>) e.getSource();
+
+          String selectedItem = (String)sourceComboBox.getSelectedItem();
+          System.out.println("Aktuell selektiert: " + selectedItem);
+
+          if(e.getItem().equals("FTP")){
+            portField.setText("21");
+          } else if(e.getItem().equals("HTTP")){
+            portField.setText("80");
+            sourceComboBox.addItem("HTTPS");
+          } else if(e.getItem().equals("HTTPS")){
+            portField.setText("443");
+            portField.setVisible(false);
+          } else {
+            portField.setText("");
+          }
+        }
+      }
+    });
 
     // initialize Panels
     JPanel mainPanel = new JPanel(new BorderLayout());
@@ -82,6 +115,24 @@ public class Logon extends JFrame{
     // create & assign Buttons
     JButton okButton = new JButton("Ausgeben");
     JButton cancelButton = new JButton("Schliessen");
+
+    ActionListener buttonListener = e -> {
+      System.out.println("ActionEvent - ActionCommand: " + e.getActionCommand());
+      System.out.println("ActionEvent - Parameter String: " + e.paramString());
+      System.out.println("ActionEvent - Modifiers: " + e.getModifiers());
+      System.out.println("ActionEvent - When: " + e.getWhen());
+
+      if(e.getSource() == okButton){
+        System.out.println("Protokoll: " + myComboBox.getSelectedItem() + " - Port: " + portField.getText());
+      } else if (e.getSource() == cancelButton){
+        System.out.println("Programm wird geschlossen");
+        System.exit(0);
+      }
+
+    };
+
+    okButton.addActionListener(buttonListener);
+    cancelButton.addActionListener(buttonListener);
 
     southPanel.add(okButton);
     southPanel.add(cancelButton);
