@@ -28,6 +28,7 @@ public class Logon extends JFrame{
     myComboBox.addItemListener(new ItemListener() {
       @Override
       public void itemStateChanged(ItemEvent e) {
+        printThreadID();
         System.out.println("ItemEvent - Item:" + e.getItem());
         System.out.println("ItemEvent - ParameterString:" + e.paramString());
         System.out.println("ItemEvent - StateChange:" + e.getStateChange());
@@ -121,6 +122,7 @@ public class Logon extends JFrame{
     cancelButton.setActionCommand(ACTION_COMMAND_CLOSE);
 
     ActionListener buttonListener = e -> {
+      printThreadID();
       System.out.println("ActionEvent - ActionCommand: " + e.getActionCommand());
       System.out.println("ActionEvent - Parameter String: " + e.paramString());
       System.out.println("ActionEvent - Modifiers: " + e.getModifiers());
@@ -256,6 +258,12 @@ public class Logon extends JFrame{
     }
 
 
+
+    printThreadID();
     new Logon();
+  }
+
+  private static void printThreadID(){
+    System.out.println("Aktueller Thread: " + Thread.currentThread().getId() + " / " + Thread.currentThread().getName() + "; Thread Gruppe: " + Thread.currentThread().getThreadGroup());
   }
 }
