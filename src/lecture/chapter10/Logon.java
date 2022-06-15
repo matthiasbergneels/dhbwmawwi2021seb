@@ -1,10 +1,7 @@
 package lecture.chapter10;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.text.ParseException;
 
 import javax.swing.*;
@@ -14,8 +11,13 @@ import javax.swing.text.MaskFormatter;
 
 public class Logon extends JFrame{
 
+  private static final String ACTION_COMMAND_PRINT = "ACTION_PRINT";
+  private static final String ACTION_COMMAND_CLOSE = "ACTION_CLOSE";
+
   public Logon() throws ParseException{
     this.setTitle("Logon");
+
+    this.setBounds(-500, -500, 300, 400);
 
     final String[] PROTOCOL_VALUE_HELP = {"FTP", "Telnet", "SMTP", "HTTP"};
     JComboBox<String> myComboBox = new JComboBox<>(PROTOCOL_VALUE_HELP);
@@ -113,8 +115,10 @@ public class Logon extends JFrame{
     filePanel.add(flowLayoutForCell);
 
     // create & assign Buttons
-    JButton okButton = new JButton("Ausgeben");
+    JButton okButton = new JButton("Ausgabe");
+    okButton.setActionCommand(ACTION_COMMAND_PRINT);
     JButton cancelButton = new JButton("Schliessen");
+    cancelButton.setActionCommand(ACTION_COMMAND_CLOSE);
 
     ActionListener buttonListener = e -> {
       System.out.println("ActionEvent - ActionCommand: " + e.getActionCommand());
@@ -122,17 +126,70 @@ public class Logon extends JFrame{
       System.out.println("ActionEvent - Modifiers: " + e.getModifiers());
       System.out.println("ActionEvent - When: " + e.getWhen());
 
-      if(e.getSource() == okButton){
+      switch(e.getActionCommand()){
+        case ACTION_COMMAND_PRINT:
+          System.out.println("Protokoll: " + myComboBox.getSelectedItem() + " - Port: " + portField.getText());
+          break;
+        case ACTION_COMMAND_CLOSE:
+          System.out.println("Programm wird geschlossen");
+          System.exit(0);
+          break;
+      }
+
+      /*
+      if(e.getActionCommand().equals("Ausgeben") ){
         System.out.println("Protokoll: " + myComboBox.getSelectedItem() + " - Port: " + portField.getText());
-      } else if (e.getSource() == cancelButton){
+      } else if (e.getActionCommand().equals("Schliessen")){
         System.out.println("Programm wird geschlossen");
         System.exit(0);
       }
+
+       */
 
     };
 
     okButton.addActionListener(buttonListener);
     cancelButton.addActionListener(buttonListener);
+
+    MouseListener buttonMouseListener = new MouseListener() {
+      @Override
+      public void mouseClicked(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mousePressed(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseReleased(MouseEvent e) {
+
+      }
+
+      @Override
+      public void mouseEntered(MouseEvent e) {
+        System.out.println("Entered Component with Mouse");
+        System.out.println("Koordinaten: " + e.getPoint());
+        if(e.getSource() instanceof JButton){
+          ((JButton)e.getSource()).setEnabled(false);
+        }
+
+      }
+
+      @Override
+      public void mouseExited(MouseEvent e) {
+        System.out.println("Exit Component with Mouse");
+        System.out.println("Koordinaten: " + e.getPoint());
+        if(e.getSource() instanceof JButton) {
+          ((JButton) e.getSource()).setEnabled(true);
+        }
+      }
+    };
+
+    okButton.addMouseListener(buttonMouseListener);
+    cancelButton.addMouseListener(buttonMouseListener);
+    this.addMouseListener(buttonMouseListener);
 
     southPanel.add(okButton);
     southPanel.add(cancelButton);
@@ -156,6 +213,24 @@ public class Logon extends JFrame{
 
     this.add(mainPanel);
 
+    JMenuBar myMenuBar = new JMenuBar();
+
+    JMenu fileMenu = new JMenu("Datei");
+
+    JMenuItem okMenuItem = new JMenuItem("Ausgeben");
+    okMenuItem.setActionCommand(ACTION_COMMAND_PRINT);
+    okMenuItem.addActionListener(buttonListener);
+    JMenuItem cancelMenuItem = new JMenuItem("Beenden");
+    cancelMenuItem.setActionCommand(ACTION_COMMAND_CLOSE);
+    cancelMenuItem.addActionListener(buttonListener);
+
+    fileMenu.add(okMenuItem);
+    fileMenu.add(cancelMenuItem);
+
+    myMenuBar.add(fileMenu);
+
+    this.setJMenuBar(myMenuBar);
+
     // set JFrame behavior
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     this.pack();
@@ -163,6 +238,24 @@ public class Logon extends JFrame{
   }
 
   public static void main(String[] args) throws ParseException {
+    GraphicsDevice defaultScreenDevice = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    System.out.println("Screen Dimension: " + defaultScreenDevice.getDefaultConfiguration().getBounds().getWidth()
+                        + " x " + defaultScreenDevice.getDefaultConfiguration().getBounds().getHeight());
+
+
+    GraphicsEnvironment virtualGraphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+    GraphicsDevice[] screens = virtualGraphicsEnvironment.getScreenDevices();
+
+    for(GraphicsDevice screen : screens){
+      System.out.println(screen);
+      System.out.println(screen.getDefaultConfiguration());
+      System.out.println(screen.getDisplayMode());
+      System.out.println(screen.getDefaultConfiguration().getBounds());
+      System.out.println(screen.getDefaultConfiguration().getBounds().getWidth() + " x " + screen.getDefaultConfiguration().getBounds().getHeight());
+      System.out.println(screen.getDefaultConfiguration().getBounds().getX() + " / " + screen.getDefaultConfiguration().getBounds().getY());
+    }
+
+
     new Logon();
   }
 }
