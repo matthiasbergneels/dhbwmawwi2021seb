@@ -1,5 +1,7 @@
 package lecture.chapter7;
 
+import lecture.chapter8.NotEnoughFreeSlotsException;
+
 public class Plane implements Bookable{
 
   private boolean[] seats; // --> false = free seat, true = booked seat

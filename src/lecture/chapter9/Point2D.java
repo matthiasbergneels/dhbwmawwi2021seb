@@ -1,4 +1,4 @@
-package lecture.chapter8;
+package lecture.chapter9;
 
 public class Point2D {
 

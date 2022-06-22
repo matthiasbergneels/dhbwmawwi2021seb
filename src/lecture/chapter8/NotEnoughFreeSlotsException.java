@@ -1,4 +1,4 @@
-package lecture.chapter7;
+package lecture.chapter8;
 
 public class NotEnoughFreeSlotsException extends Exception {
 
