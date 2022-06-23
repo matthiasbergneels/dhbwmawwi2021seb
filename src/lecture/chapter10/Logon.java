@@ -233,6 +233,19 @@ public class Logon extends JFrame{
 
     this.setJMenuBar(myMenuBar);
 
+    MenuBar myAwtMenuBar = new MenuBar();
+
+    Menu myAwtMenu = new Menu("Dateien");
+
+    MenuItem myAwtMenuItem = new MenuItem("Schliessen");
+    myAwtMenuItem.setActionCommand(ACTION_COMMAND_CLOSE);
+    myAwtMenuItem.addActionListener(buttonListener);
+
+    myAwtMenu.add(myAwtMenuItem);
+    myAwtMenuBar.add(myAwtMenu);
+
+    this.setMenuBar(myAwtMenuBar);
+
     // set JFrame behavior
     this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     this.pack();
