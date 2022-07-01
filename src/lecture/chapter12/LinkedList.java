@@ -87,6 +87,9 @@ public class LinkedList {
     if(firstNode != null){
 
       if(firstNode.getWord().equals(word)){
+        if(firstNode == lastNode){
+          lastNode = null;
+        }
         firstNode = firstNode.getNextNode();
         size--;
         return true;
@@ -95,6 +98,9 @@ public class LinkedList {
       Node currentNode = firstNode;
       while(currentNode.getNextNode() != null){
         if(currentNode.getNextNode().getWord().equals(word)){
+          if(currentNode.getNextNode() == lastNode){
+            lastNode = currentNode;
+          }
           currentNode.setNextNode(currentNode.getNextNode().getNextNode());
           size--;
           return true;
