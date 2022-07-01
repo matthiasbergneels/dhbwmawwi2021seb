@@ -26,7 +26,7 @@ public class LinkedList {
     return 0;
   }
 
-  public boolean conatins(String word){
+  public boolean contains(String word){
     // TODO
     return false;
   }
