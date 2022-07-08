@@ -14,9 +14,39 @@ public class BinaryTree<T> {
       return true;
     }
 
-    // TODO --> add fertig implementieren
+    return add(newNode, root);
+  }
+
+  private boolean add(Node<T> newNode, Node<T> currentNode){
+    int compareToResult = ((Comparable)currentNode.getData()).compareTo(newNode.getData());
+
+    if(compareToResult > 0){
+      // leftSide
+      if(currentNode.getLeftNode() != null){
+        return add(newNode, currentNode.getLeftNode());
+      } else {
+        currentNode.setLeftNode(newNode);
+        this.size++;
+        return true;
+      }
+
+    }else if(compareToResult < 0){
+      // rightSide
+
+      if(currentNode.getRightNode() != null){
+        return add(newNode, currentNode.getRightNode());
+      } else {
+        currentNode.setRightNode(newNode);
+        this.size++;
+        return true;
+      }
+    }
 
     return false;
+  }
+
+  public int size(){
+    return this.size;
   }
 
 
