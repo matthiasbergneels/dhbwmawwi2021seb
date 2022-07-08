@@ -16,6 +16,11 @@ public class BinaryTreeRun {
     numbersTree.add(0);
     numbersTree.add(100);
 
+    System.out.println("Binary Tree - path traversals:");
+    numbersTree.printInOrder();
+    numbersTree.printPreOrder();
+    numbersTree.printPostOrder();
+
     System.out.println("Baum ist fertig!");
 
   }

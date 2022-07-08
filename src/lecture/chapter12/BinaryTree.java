@@ -50,6 +50,82 @@ public class BinaryTree<T> {
   }
 
 
+  // traversieren  (path traversal)
+
+  // in-order traversal --> left - current (part-tree / root) - right
+  public void printInOrder(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    System.out.println("Print in-Order:");
+    printInOrder(root);
+    System.out.println();
+  }
+
+  private void printInOrder(Node<T> currentNode){
+
+    if(currentNode.getLeftNode() != null){
+      printInOrder(currentNode.getLeftNode());
+    }
+
+    System.out.print(currentNode.getData() + ", ");
+
+    if(currentNode.getRightNode() != null){
+      printInOrder(currentNode.getRightNode());
+    }
+  }
+
+  // pre-Order traversal --> current-left-right
+  public void printPreOrder(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    System.out.println("Print pre-Order:");
+    printPreOrder(root);
+    System.out.println();
+  }
+
+  private void printPreOrder(Node<T> currentNode){
+    System.out.print(currentNode.getData() + ", ");
+
+    if(currentNode.getLeftNode() != null){
+      printPreOrder(currentNode.getLeftNode());
+    }
+
+    if(currentNode.getRightNode() != null){
+      printPreOrder(currentNode.getRightNode());
+    }
+  }
+
+  // pre-Order traversal --> left-right-current
+  public void printPostOrder(){
+    if(root == null){
+      System.out.println("Baum ist leer");
+      return;
+    }
+
+    System.out.println("Print post-Order:");
+    printPostOrder(root);
+    System.out.println();
+  }
+
+  private void printPostOrder(Node<T> currentNode){
+    if(currentNode.getLeftNode() != null){
+      printPostOrder(currentNode.getLeftNode());
+    }
+
+    if(currentNode.getRightNode() != null){
+      printPostOrder(currentNode.getRightNode());
+    }
+
+    System.out.print(currentNode.getData() + ", ");
+  }
+
+
   private class Node<T>{
     private final T data;
     private Node<T> leftNode;
