@@ -2,6 +2,8 @@ package lecture.chapter13;
 
 public class SortingAlgorithms {
 
+  private static int quickSortSwapCount = 0;
+
   public static void main(String[] args) {
 
     int[] toSort = {50, 70, 100, 80, 40, 30, 20, 10 ,60};
@@ -21,6 +23,14 @@ public class SortingAlgorithms {
 
     System.out.println("Bubble Sort V3 sortiert: ");
     sorted = bubbleSortV3(toSort.clone());
+    printArray(sorted);
+
+    System.out.println("Selection Sort sortiert: ");
+    sorted = selectionSort(toSort.clone());
+    printArray(sorted);
+
+    System.out.println("Quick Sort sortiert: ");
+    sorted = quickSort(toSort.clone());
     printArray(sorted);
 
 
@@ -107,6 +117,76 @@ public class SortingAlgorithms {
     printRuntimeDuration("Bubble Sort V3", numbers.length, startTime, stopTime, swapCount);
 
     return numbers;
+  }
+
+  public static int[] selectionSort(int[] numbers){
+
+    int swapCount = 0;
+    long startTime = System.nanoTime();
+
+    int sortedMarker = numbers.length - 1;
+
+    while(sortedMarker > 0){
+      int maxPos = sortedMarker;
+      for(int i = 0; i < sortedMarker; i++){
+        if(numbers[i] > numbers[maxPos]){
+          maxPos = i;
+        }
+      }
+      swap(numbers, maxPos, sortedMarker);
+      swapCount++;
+      sortedMarker--;
+    }
+
+    long stopTime = System.nanoTime();
+    printRuntimeDuration("Selection Sort", numbers.length, startTime, stopTime, swapCount);
+
+    return numbers;
+  }
+
+  public static int[] quickSort(int[] numbers){
+    quickSortSwapCount = 0;
+    long startTime = System.nanoTime();
+
+    quickSort(numbers, 0, numbers.length-1);
+
+    long stopTime = System.nanoTime();
+    printRuntimeDuration("QuickSort", numbers.length, startTime, stopTime, quickSortSwapCount);
+    return numbers;
+  }
+
+  private static void quickSort(int[] numbers, int left, int right){
+
+    int indexLeft = left;
+    int indexRight = right;
+
+    if(left < right){
+      int pivot = numbers[(indexLeft + indexRight) / 2];
+
+      while(indexLeft <= indexRight){
+        while(numbers[indexLeft] < pivot){
+          indexLeft++;
+        }
+        while(numbers[indexRight] > pivot){
+          indexRight--;
+        }
+        if(indexLeft <= indexRight){
+          swap(numbers, indexLeft, indexRight);
+          quickSortSwapCount++;
+          indexLeft++;
+          indexRight--;
+        }
+      }
+
+      if(left < indexRight){
+        quickSort(numbers, left, indexRight);
+      }
+      if(indexLeft < right){
+        quickSort(numbers, indexLeft, right);
+      }
+
+    }
+
   }
 
   private static void swap(int[] array, int a, int b) {

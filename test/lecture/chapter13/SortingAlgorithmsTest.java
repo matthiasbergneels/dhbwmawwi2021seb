@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SortingAlgorithmsTest {
 
-  static int count = 20000;
+  static int count = 10000;
   static int randomRange = 3000000;
   static int[] toSort = null;
 
@@ -36,6 +36,18 @@ class SortingAlgorithmsTest {
     @Test
     void bubbleSortV3() {
       int[] bubbleSortedArray = SortingAlgorithms.bubbleSortV3(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
+
+    @Test
+    void selectionSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.selectionSort(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
+
+    @Test
+    void quiclSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.quickSort(toSort.clone());
       assertTrue(isSorted(bubbleSortedArray));
     }
   }
@@ -67,7 +79,17 @@ class SortingAlgorithmsTest {
       assertTrue(isSorted(bubbleSortedArray));
     }
 
+    @Test
+    void selectionSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.selectionSort(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
 
+    @Test
+    void quiclSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.quickSort(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
   }
 
   @Nested
@@ -96,6 +118,17 @@ class SortingAlgorithmsTest {
       assertTrue(isSorted(bubbleSortedArray));
     }
 
+    @Test
+    void selectionSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.selectionSort(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
+
+    @Test
+    void quiclSort() {
+      int[] bubbleSortedArray = SortingAlgorithms.quickSort(toSort.clone());
+      assertTrue(isSorted(bubbleSortedArray));
+    }
   }
 
 
